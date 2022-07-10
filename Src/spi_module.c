@@ -11,6 +11,7 @@ void SPIMODULE_Init( void )
 {
   MCP23S17_Init();
   MCP23S17_SetIODirectionAB( 0, 0 );
+  MCP23S17_ReadAllRegs();
 }
 
 void SPIMODULE_LedsSetState( uint8_t ledState )
@@ -23,5 +24,4 @@ void SPIMODULE_LedsSetState( uint8_t ledState )
   {
     MCP23S17_WriteOutputA( 0x00u );
   }
-  MCP23S17_ReadAllRegs();
 }
