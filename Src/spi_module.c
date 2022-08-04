@@ -18,10 +18,10 @@ void SPIMODULE_LedsSetState( uint8_t ledState )
 {
   if( ledState == 0 )
   {
-    MCP23S17_WriteOutputA( 0xFFu );
+    MCP23S17_WritePortA( 0xFFu );
   }
   else
   {
-    MCP23S17_WriteOutputA( 0x00u );
+    MCP23S17_WritePortA( 0x00u );
   }
 }
