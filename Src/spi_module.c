@@ -7,21 +7,27 @@
 
 #include "mcp23s17.h"
 
-void SPIMODULE_Init( void )
+static MCP23S17_Handler_t SpiHandler;
+
+void SPIMODULE_Init( SPI_HandleTypeDef* ptrSpi, GPIO_TypeDef* ptrGpioPort, uint16_t gpioPin  )
 {
-  MCP23S17_Init();
-  MCP23S17_SetIODirectionAB( 0, 0 );
-  MCP23S17_ReadAllRegs();
+  SpiHandler.ptrHSpi = ptrSpi;
+  SpiHandler.portCS  = ptrGpioPort;
+  SpiHandler.pinCS   = gpioPin;
+
+  MCP23S17_Init(&SpiHandler);
+  MCP23S17_SetIODirectionAB(&SpiHandler, 0, 0 );
+  MCP23S17_ReadAllRegs(&SpiHandler);
 }
 
 void SPIMODULE_LedsSetState( uint8_t ledState )
 {
   if( ledState == 0 )
   {
-    MCP23S17_WritePortA( 0xFFu );
+    MCP23S17_WritePortA( &SpiHandler, 0xFFu );
   }
   else
   {
-    MCP23S17_WritePortA( 0x00u );
+    MCP23S17_WritePortA( &SpiHandler, 0x00u );
   }
 }
