@@ -24,10 +24,24 @@ void SPIMODULE_LedsSetState( uint8_t ledState )
 {
   if( ledState == 0 )
   {
+    MCP23S17_WritePortA( &SpiHandler, 0x0Fu );
+  }
+  else
+  {
+    MCP23S17_WritePortA( &SpiHandler, 0x00u );
+  }
+}
+
+void SPIMODULE_ToogleDisplay( uint8_t ledState )
+{
+  if( ledState == 0 )
+  {
+    MCP23S17_WritePortB( &SpiHandler, 0xFFu );
     MCP23S17_WritePortA( &SpiHandler, 0xFFu );
   }
   else
   {
+    MCP23S17_WritePortB( &SpiHandler, 0x00u );
     MCP23S17_WritePortA( &SpiHandler, 0x00u );
   }
 }

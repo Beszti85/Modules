@@ -12,5 +12,6 @@
 
 void SPIMODULE_Init( SPI_HandleTypeDef* ptrSpi, GPIO_TypeDef* ptrGpioPort, uint16_t gpioPin  );
 void SPIMODULE_LedsSetState( uint8_t ledState );
+void SPIMODULE_ToogleDisplay( uint8_t ledState );
 
 #endif /* INC_SPI_MODULE_H_ */
