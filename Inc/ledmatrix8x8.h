@@ -8,7 +8,9 @@
 #ifndef INC_LEDMATRIX8X8_H_
 #define INC_LEDMATRIX8X8_H_
 
-void LEDMATRIX_Init( void );
-void LEDMATRIX_RotateArrow( void );
+#include "max7219.h"
+
+void LEDMATRIX_Init( MAX7219_Handler_t* ptrHandler );
+void LEDMATRIX_RotateArrow( MAX7219_Handler_t* ptrHandler );
 
 #endif /* INC_LEDMATRIX8X8_H_ */

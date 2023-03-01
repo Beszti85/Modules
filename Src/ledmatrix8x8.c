@@ -14,16 +14,16 @@ uint8_t LEDMATRIX_RotArrow[32u] = { 0x18u, 0x3Cu, 0x7Eu, 0xFFu, 0x18u, 0x18u, 0x
                                     0x18u, 0x18u, 0x18u, 0x18u, 0xFFu, 0x7Eu, 0x3Cu, 0x18u,
                                     0x08u, 0x0Cu, 0x0Eu, 0xFFu, 0xFFu, 0x0Eu, 0x0Cu, 0x08u, };
 
-void LEDMATRIX_Init( void )
+void LEDMATRIX_Init( MAX7219_Handler_t* ptrHandler )
 {
-  MAX7219_Init();
+  MAX7219_Init(ptrHandler);
 }
 
-void LEDMATRIX_RotateArrow( void )
+void LEDMATRIX_RotateArrow( MAX7219_Handler_t* ptrHandler )
 {
   static uint8_t rotCtr = 0u;
 
-  MAX7219_SetAllDigits( &LEDMATRIX_RotArrow[rotCtr * 8u] );
+  MAX7219_SetAllDigits( ptrHandler, &LEDMATRIX_RotArrow[rotCtr * 8u] );
 
   rotCtr++;
 
