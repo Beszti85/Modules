@@ -17,6 +17,8 @@ extern "C" {
 void SPIMODULE_Init( SPI_HandleTypeDef* ptrSpi, GPIO_TypeDef* ptrGpioPort, uint16_t gpioPin  );
 void SPIMODULE_LedsSetState( uint8_t ledState );
 void SPIMODULE_ToogleDisplay( uint8_t ledState );
+void SPIMODULE_DisplayCharTest( void );
+void SPIMODULE_UpdateDisplayTestValue( void );
 
 #ifdef __cplusplus
 }
